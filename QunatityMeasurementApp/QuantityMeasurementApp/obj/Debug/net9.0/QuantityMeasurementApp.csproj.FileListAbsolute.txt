@@ -1,0 +1,14 @@
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\bin\Debug\net9.0\QuantityMeasurementApp.exe
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\bin\Debug\net9.0\QuantityMeasurementApp.deps.json
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\bin\Debug\net9.0\QuantityMeasurementApp.runtimeconfig.json
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\bin\Debug\net9.0\QuantityMeasurementApp.dll
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\bin\Debug\net9.0\QuantityMeasurementApp.pdb
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\QuantityMeasurementApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\QuantityMeasurementApp.AssemblyInfoInputs.cache
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\QuantityMeasurementApp.AssemblyInfo.cs
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\QuantityMeasurementApp.csproj.CoreCompileInputs.cache
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\QuantityMeasurementApp.dll
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\refint\QuantityMeasurementApp.dll
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\QuantityMeasurementApp.pdb
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\QuantityMeasurementApp.genruntimeconfig.cache
+D:\College\QuantityMeasurementApp\QunatityMeasurementApp\QuantityMeasurementApp\obj\Debug\net9.0\ref\QuantityMeasurementApp.dll
