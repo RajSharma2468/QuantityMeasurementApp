@@ -1,0 +1,16 @@
+D:\College\QuantityMeasurementApp\RepoLayer\bin\Debug\net9.0\RepoLayer.deps.json
+D:\College\QuantityMeasurementApp\RepoLayer\bin\Debug\net9.0\RepoLayer.dll
+D:\College\QuantityMeasurementApp\RepoLayer\bin\Debug\net9.0\RepoLayer.pdb
+D:\College\QuantityMeasurementApp\RepoLayer\bin\Debug\net9.0\ModelLayer.dll
+D:\College\QuantityMeasurementApp\RepoLayer\bin\Debug\net9.0\ModelLayer.pdb
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.csproj.AssemblyReference.cache
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.AssemblyInfoInputs.cache
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.AssemblyInfo.cs
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.csproj.CoreCompileInputs.cache
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.sourcelink.json
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.csproj.Up2Date
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.dll
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\refint\RepoLayer.dll
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\RepoLayer.pdb
+D:\College\QuantityMeasurementApp\RepoLayer\obj\Debug\net9.0\ref\RepoLayer.dll

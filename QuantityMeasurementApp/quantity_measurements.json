@@ -1,0 +1,86 @@
+[
+  {
+    "Timestamp": "2026-03-13T14:09:02.9628586+05:30",
+    "OperationType": "CONVERT",
+    "Operand1Value": 67,
+    "Operand1Unit": "gram",
+    "Operand2Value": null,
+    "Operand2Unit": null,
+    "ResultValue": null,
+    "ResultUnit": null,
+    "HasError": true,
+    "ErrorMessage": "Invalid unit: volume for measurement type: Weight"
+  },
+  {
+    "Timestamp": "2026-03-13T14:09:33.2544848+05:30",
+    "OperationType": "CONVERT",
+    "Operand1Value": 2,
+    "Operand1Unit": "gram",
+    "Operand2Value": null,
+    "Operand2Unit": null,
+    "ResultValue": null,
+    "ResultUnit": null,
+    "HasError": true,
+    "ErrorMessage": "Invalid unit: weight for measurement type: Weight"
+  },
+  {
+    "Timestamp": "2026-03-13T14:10:37.7947575+05:30",
+    "OperationType": "CONVERT",
+    "Operand1Value": 34,
+    "Operand1Unit": "gram",
+    "Operand2Value": null,
+    "Operand2Unit": null,
+    "ResultValue": 34,
+    "ResultUnit": "gram",
+    "HasError": false,
+    "ErrorMessage": null
+  },
+  {
+    "Timestamp": "2026-03-13T14:11:42.9187755+05:30",
+    "OperationType": "CONVERT",
+    "Operand1Value": 67,
+    "Operand1Unit": "gram",
+    "Operand2Value": null,
+    "Operand2Unit": null,
+    "ResultValue": 67000,
+    "ResultUnit": "kilogram",
+    "HasError": false,
+    "ErrorMessage": null
+  },
+  {
+    "Timestamp": "2026-03-13T14:12:34.3835403+05:30",
+    "OperationType": "CONVERT",
+    "Operand1Value": 67,
+    "Operand1Unit": "feet",
+    "Operand2Value": null,
+    "Operand2Unit": null,
+    "ResultValue": 2.1981627296587924,
+    "ResultUnit": "centimeter",
+    "HasError": false,
+    "ErrorMessage": null
+  },
+  {
+    "Timestamp": "2026-03-13T14:13:41.568613+05:30",
+    "OperationType": "COMPARE",
+    "Operand1Value": 67,
+    "Operand1Unit": "gram",
+    "Operand2Value": 89,
+    "Operand2Unit": "feet",
+    "ResultValue": null,
+    "ResultUnit": null,
+    "HasError": true,
+    "ErrorMessage": "Cannot operate on different measurement types: Weight and Length"
+  },
+  {
+    "Timestamp": "2026-03-13T14:14:29.9456971+05:30",
+    "OperationType": "COMPARE",
+    "Operand1Value": 67,
+    "Operand1Unit": "gram",
+    "Operand2Value": 78,
+    "Operand2Unit": "gram",
+    "ResultValue": 0,
+    "ResultUnit": "boolean",
+    "HasError": false,
+    "ErrorMessage": null
+  }
+]

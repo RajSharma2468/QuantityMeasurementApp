@@ -1,0 +1,12 @@
+D:\College\QuantityMeasurementApp\ModelLayer\bin\Debug\net9.0\ModelLayer.deps.json
+D:\College\QuantityMeasurementApp\ModelLayer\bin\Debug\net9.0\ModelLayer.dll
+D:\College\QuantityMeasurementApp\ModelLayer\bin\Debug\net9.0\ModelLayer.pdb
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ModelLayer.AssemblyInfoInputs.cache
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ModelLayer.AssemblyInfo.cs
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ModelLayer.csproj.CoreCompileInputs.cache
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ModelLayer.sourcelink.json
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ModelLayer.dll
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\refint\ModelLayer.dll
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ModelLayer.pdb
+D:\College\QuantityMeasurementApp\ModelLayer\obj\Debug\net9.0\ref\ModelLayer.dll
