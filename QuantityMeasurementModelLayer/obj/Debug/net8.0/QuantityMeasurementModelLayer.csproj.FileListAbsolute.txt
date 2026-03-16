@@ -1,0 +1,13 @@
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\bin\Debug\net8.0\QuantityMeasurementModelLayer.deps.json
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\bin\Debug\net8.0\QuantityMeasurementModelLayer.dll
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\bin\Debug\net8.0\QuantityMeasurementModelLayer.pdb
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.csproj.AssemblyReference.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.AssemblyInfoInputs.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.AssemblyInfo.cs
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.csproj.CoreCompileInputs.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.sourcelink.json
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.dll
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\refint\QuantityMeasurementModelLayer.dll
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\QuantityMeasurementModelLayer.pdb
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net8.0\ref\QuantityMeasurementModelLayer.dll
