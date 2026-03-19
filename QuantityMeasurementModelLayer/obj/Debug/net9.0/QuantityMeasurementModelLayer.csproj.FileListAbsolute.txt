@@ -1,0 +1,5 @@
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net9.0\QuantityMeasurementModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net9.0\QuantityMeasurementModelLayer.AssemblyInfoInputs.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net9.0\QuantityMeasurementModelLayer.AssemblyInfo.cs
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net9.0\QuantityMeasurementModelLayer.csproj.CoreCompileInputs.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementModelLayer\obj\Debug\net9.0\QuantityMeasurementModelLayer.sourcelink.json

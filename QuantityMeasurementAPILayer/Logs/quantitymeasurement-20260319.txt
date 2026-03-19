@@ -1,0 +1,115 @@
+2026-03-19 16:57:16.852 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-19 16:57:16.919 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-19 16:57:16.985 +05:30 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-03-19 16:57:17.118 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [QuantityMeasurements] (
+    [Id] bigint NOT NULL IDENTITY,
+    [ThisValue] float NOT NULL,
+    [ThisUnit] nvarchar(50) NOT NULL,
+    [ThisMeasurementType] nvarchar(50) NOT NULL,
+    [ThatValue] float NOT NULL,
+    [ThatUnit] nvarchar(50) NOT NULL,
+    [ThatMeasurementType] nvarchar(50) NOT NULL,
+    [Operation] nvarchar(20) NOT NULL,
+    [ResultString] nvarchar(max) NULL,
+    [ResultValue] float NOT NULL,
+    [ResultUnit] nvarchar(50) NULL,
+    [ResultMeasurementType] nvarchar(50) NULL,
+    [ErrorMessage] nvarchar(max) NULL,
+    [IsError] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [CreatedAt] datetime2 NOT NULL DEFAULT (GETDATE()),
+    [UpdatedAt] datetime2 NULL,
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    CONSTRAINT [PK_QuantityMeasurements] PRIMARY KEY ([Id])
+);
+2026-03-19 16:57:17.130 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_QuantityMeasurements_CreatedAt] ON [QuantityMeasurements] ([CreatedAt]);
+2026-03-19 16:57:17.134 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_QuantityMeasurements_CreatedAt_Operation] ON [QuantityMeasurements] ([CreatedAt], [Operation]);
+2026-03-19 16:57:17.137 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_QuantityMeasurements_IsDeleted] ON [QuantityMeasurements] ([IsDeleted]);
+2026-03-19 16:57:17.140 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_QuantityMeasurements_IsError] ON [QuantityMeasurements] ([IsError]);
+2026-03-19 16:57:17.143 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_QuantityMeasurements_Operation] ON [QuantityMeasurements] ([Operation]);
+2026-03-19 16:57:17.146 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_QuantityMeasurements_Operation_IsError] ON [QuantityMeasurements] ([Operation], [IsError]);
+2026-03-19 16:57:17.151 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_QuantityMeasurements_ThisMeasurementType] ON [QuantityMeasurements] ([ThisMeasurementType]);
+2026-03-19 16:57:17.273 +05:30 [INF] Now listening on: http://localhost:5002
+2026-03-19 16:57:17.276 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-19 16:57:17.277 +05:30 [INF] Hosting environment: Development
+2026-03-19 16:57:17.277 +05:30 [INF] Content root path: D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer
+2026-03-19 16:58:28.206 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/ - null null
+2026-03-19 16:58:28.311 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-03-19 16:58:28.334 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/ - 404 0 null 129.3768ms
+2026-03-19 16:58:28.344 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5002/, Response status code: 404
+2026-03-19 16:58:30.339 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/ - null null
+2026-03-19 16:58:30.347 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/ - 404 0 null 7.8843ms
+2026-03-19 16:58:30.353 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5002/, Response status code: 404
+2026-03-19 16:58:31.381 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/ - null null
+2026-03-19 16:58:31.399 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/ - 404 0 null 18.2271ms
+2026-03-19 16:58:31.403 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5002/, Response status code: 404
+2026-03-19 16:58:33.848 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/ - null null
+2026-03-19 16:58:33.857 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/ - 404 0 null 9.1169ms
+2026-03-19 16:58:33.864 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5002/, Response status code: 404
+2026-03-19 16:58:34.737 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/ - null null
+2026-03-19 16:58:34.751 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/ - 404 0 null 13.8442ms
+2026-03-19 16:58:34.755 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5002/, Response status code: 404
+2026-03-19 17:01:18.730 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/swagger - null null
+2026-03-19 17:01:18.737 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/swagger - 301 0 null 7.1216ms
+2026-03-19 17:01:18.744 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/swagger/index.html - null null
+2026-03-19 17:01:18.840 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/swagger/index.html - 200 null text/html;charset=utf-8 95.9689ms
+2026-03-19 17:01:18.876 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/swagger/swagger-ui.css - null null
+2026-03-19 17:01:18.885 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/swagger/swagger-ui-bundle.js - null null
+2026-03-19 17:01:18.887 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-19 17:01:18.945 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-03-19 17:01:18.948 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-03-19 17:01:18.966 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-03-19 17:01:18.970 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/swagger/swagger-ui.css - 200 144929 text/css 94.253ms
+2026-03-19 17:01:18.970 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 83.1753ms
+2026-03-19 17:01:18.972 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 87.5123ms
+2026-03-19 17:01:20.101 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/swagger/v1/swagger.json - null null
+2026-03-19 17:01:20.134 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/swagger/favicon-32x32.png - null null
+2026-03-19 17:01:20.137 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-03-19 17:01:20.139 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/swagger/favicon-32x32.png - 200 628 image/png 5.0001ms
+2026-03-19 17:01:20.276 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 174.7619ms
+2026-03-19 17:01:43.685 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/health - null null
+2026-03-19 17:01:43.693 +05:30 [INF] Executing endpoint 'Health checks'
+2026-03-19 17:01:43.773 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-19 17:01:43.793 +05:30 [INF] Executed endpoint 'Health checks'
+2026-03-19 17:01:43.795 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/health - 200 null text/plain 110.0969ms
+2026-03-19 17:01:44.768 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/favicon.ico - null null
+2026-03-19 17:01:44.772 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/favicon.ico - 404 0 null 3.1803ms
+2026-03-19 17:01:44.775 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5002/favicon.ico, Response status code: 404
+2026-03-19 17:03:03.505 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5002/health - null null
+2026-03-19 17:03:03.509 +05:30 [INF] Executing endpoint 'Health checks'
+2026-03-19 17:03:03.592 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-19 17:03:03.595 +05:30 [INF] Executed endpoint 'Health checks'
+2026-03-19 17:03:03.597 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5002/health - 200 null text/plain 91.4158ms
+2026-03-19 17:03:03.643 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5002/api/v1/Quantities/compare - null null
+2026-03-19 17:03:03.648 +05:30 [INF] Executing endpoint 'QuantityMeasurementAPILayer.Controllers.QuantitiesController.Compare (QuantityMeasurementAPILayer)'
+2026-03-19 17:03:03.683 +05:30 [INF] Route matched with {action = "Compare", controller = "Quantities"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[QuantityMeasurementBusinessLayer.DTOs.QuantityResultDTO]] Compare(QuantityMeasurementBusinessLayer.DTOs.QuantityInputDTO) on controller QuantityMeasurementAPILayer.Controllers.QuantitiesController (QuantityMeasurementAPILayer).
+2026-03-19 17:03:03.720 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2026-03-19 17:03:03.754 +05:30 [INF] Executed action QuantityMeasurementAPILayer.Controllers.QuantitiesController.Compare (QuantityMeasurementAPILayer) in 62.7204ms
+2026-03-19 17:03:03.756 +05:30 [INF] Executed endpoint 'QuantityMeasurementAPILayer.Controllers.QuantitiesController.Compare (QuantityMeasurementAPILayer)'
+2026-03-19 17:03:03.758 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5002/api/v1/Quantities/compare - 415 null application/json; charset=utf-8 114.5728ms

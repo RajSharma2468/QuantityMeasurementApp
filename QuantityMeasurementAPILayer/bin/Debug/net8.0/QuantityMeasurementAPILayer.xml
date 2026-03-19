@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuantityMeasurementAPILayer</name>
+    </assembly>
+    <members>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.Compare(QuantityMeasurementBusinessLayer.DTOs.QuantityInputDTO)">
+            <summary>
+            Compare two quantities
+            </summary>
+            <param name="input">The quantities to compare</param>
+            <returns>Comparison result</returns>
+            <response code="200">Returns the comparison result</response>
+            <response code="400">If the input is invalid</response>
+            <response code="500">If there was an internal server error</response>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.Convert(QuantityMeasurementBusinessLayer.DTOs.QuantityInputDTO)">
+            <summary>
+            Convert a quantity to another unit
+            </summary>
+            <param name="input">The quantity to convert</param>
+            <returns>Converted value</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.Add(QuantityMeasurementBusinessLayer.DTOs.QuantityInputDTO)">
+            <summary>
+            Add two quantities
+            </summary>
+            <param name="input">The quantities to add</param>
+            <returns>Sum of quantities</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.Subtract(QuantityMeasurementBusinessLayer.DTOs.QuantityInputDTO)">
+            <summary>
+            Subtract two quantities
+            </summary>
+            <param name="input">The quantities to subtract</param>
+            <returns>Difference of quantities</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.Multiply(QuantityMeasurementBusinessLayer.DTOs.QuantityInputDTO)">
+            <summary>
+            Multiply two quantities
+            </summary>
+            <param name="input">The quantities to multiply</param>
+            <returns>Product of quantities</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.Divide(QuantityMeasurementBusinessLayer.DTOs.QuantityInputDTO)">
+            <summary>
+            Divide two quantities
+            </summary>
+            <param name="input">The quantities to divide</param>
+            <returns>Quotient of quantities</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.GetOperationHistory(System.String)">
+            <summary>
+            Get operation history
+            </summary>
+            <param name="operation">Operation type (compare, convert, add, etc.)</param>
+            <returns>List of operations</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.GetMeasurementsByType(System.String)">
+            <summary>
+            Get measurements by type
+            </summary>
+            <param name="measurementType">Measurement type (LengthUnit, WeightUnit, etc.)</param>
+            <returns>List of measurements</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.GetOperationCount(System.String)">
+            <summary>
+            Get operation count
+            </summary>
+            <param name="operation">Operation type</param>
+            <returns>Count of successful operations</returns>
+        </member>
+        <member name="M:QuantityMeasurementAPILayer.Controllers.QuantitiesController.GetErrorHistory">
+            <summary>
+            Get error history
+            </summary>
+            <returns>List of failed operations</returns>
+        </member>
+    </members>
+</doc>
