@@ -31,7 +31,7 @@ namespace QuantityMeasurementRepositoryLayer.Repositories
             
             if (string.IsNullOrEmpty(this._connectionString))
             {
-                this._connectionString = "Server=(localdb)\\mssqllocaldb;Database=QuantityMeasurementDB;Trusted_Connection=True;";
+                this._connectionString = "Server=.\\SQLEXPRESS\\mssqllocaldb;Database=QuantityMeasurementDB;Trusted_Connection=True;";
             }
             
             this.CreateDatabase();

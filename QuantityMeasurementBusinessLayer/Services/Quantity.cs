@@ -8,7 +8,7 @@ namespace QuantityMeasurementBusinessLayer.Services
         private double _value;
         private string _unitType;
         private string _unitName;
-        
+         
         public Quantity(double value, string unitType, string unitName)
         {
             this._value = value;
@@ -21,9 +21,9 @@ namespace QuantityMeasurementBusinessLayer.Services
             if (this._unitType == "Length")
             {
                 LengthUnit unit;
-                if (System.Enum.TryParse<LengthUnit>(this._unitName, out unit))
+                if (System.Enum.TryParse<LengthUnit>(this._unitName, out unit)) 
                 {
-                    return unit.ToMeters(value);
+                    return unit.ToMeters(value); 
                 }
             }
             else if (this._unitType == "Weight")
