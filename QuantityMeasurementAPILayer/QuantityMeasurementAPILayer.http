@@ -1,0 +1,6 @@
+@QuantityMeasurementAPILayer_HostAddress = http://localhost:5283
+
+GET {{QuantityMeasurementAPILayer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

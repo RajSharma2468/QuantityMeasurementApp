@@ -346,16 +346,6 @@
             "related": ".xml"
           }
         }
-      },
-      "QuantityMeasurementApp/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/QuantityMeasurementApp.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/QuantityMeasurementApp.dll": {}
-        }
       }
     }
   },
@@ -803,11 +793,6 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "QuantityMeasurementApp/1.0.0": {
-      "type": "project",
-      "path": "../QuantityMeasurementApp/QuantityMeasurementApp.csproj",
-      "msbuildProject": "../QuantityMeasurementApp/QuantityMeasurementApp.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -816,7 +801,6 @@
       "NUnit >= 4.2.2",
       "NUnit.Analyzers >= 4.4.0",
       "NUnit3TestAdapter >= 4.6.0",
-      "QuantityMeasurementApp >= 1.0.0",
       "coverlet.collector >= 6.0.2"
     ]
   },
@@ -852,11 +836,7 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {
-            "D:\\College\\QuantityMeasurementApp\\QuantityMeasurementApp\\QuantityMeasurementApp.csproj": {
-              "projectPath": "D:\\College\\QuantityMeasurementApp\\QuantityMeasurementApp\\QuantityMeasurementApp.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
