@@ -1,8 +1,12 @@
-namespace QuantityMeasurementModelLayer.DTOs.Auth;
-
-public class RegisterRequestDto
+namespace QuantityMeasurementModelLayer.DTOs.Auth
 {
-    public string Username { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
+    public class RegisterRequestDto
+    {
+        public string? Username { get; set; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+        public string? ConfirmPassword { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+    }
 }

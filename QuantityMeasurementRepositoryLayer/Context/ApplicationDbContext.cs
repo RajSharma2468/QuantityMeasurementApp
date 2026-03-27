@@ -28,7 +28,7 @@ namespace QuantityMeasurementRepositoryLayer.Context
                 entity.HasIndex(u => u.Email).IsUnique();
             });
 
-            // RefreshToken configuration - FIXED
+            // RefreshToken configuration
             modelBuilder.Entity<RefreshToken>(entity =>
             {
                 entity.HasKey(rt => rt.Id);
@@ -39,14 +39,15 @@ namespace QuantityMeasurementRepositoryLayer.Context
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Measurement configuration
+            // Measurement configuration - UPDATED for new Measurement model
             modelBuilder.Entity<Measurement>(entity =>
             {
                 entity.HasKey(m => m.Id);
-                entity.Property(m => m.FromUnit).IsRequired().HasMaxLength(50);
-                entity.Property(m => m.ToUnit).IsRequired().HasMaxLength(50);
-                entity.Property(m => m.InputValue).HasColumnType("decimal(18,4)");
-                entity.Property(m => m.OutputValue).HasColumnType("decimal(18,4)");
+                entity.Property(m => m.Type).IsRequired().HasMaxLength(50);
+                entity.Property(m => m.Unit).IsRequired().HasMaxLength(20);
+                entity.Property(m => m.Value).HasColumnType("decimal(18,4)");
+                entity.Property(m => m.Notes).HasMaxLength(500);
+                entity.Property(m => m.Date).IsRequired();
                 entity.HasOne(m => m.User)
                     .WithMany()
                     .HasForeignKey(m => m.UserId)

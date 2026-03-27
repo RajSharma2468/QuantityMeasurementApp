@@ -26,51 +26,115 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequestDto request)
     {
-        var existingUser = await _authRepo.GetUserByUsername(request.Username);
-        if (existingUser != null)
-            return BadRequest(ApiResponse<object>.Error("Username already exists"));
+        try
+        {
+            // Check if username already exists
+            var existingUser = await _authRepo.GetUserByUsername(request.Username);
+            if (existingUser != null)
+                return BadRequest(ApiResponse<object>.Error("Username already exists"));
 
-        existingUser = await _authRepo.GetUserByEmail(request.Email);
-        if (existingUser != null)
-            return BadRequest(ApiResponse<object>.Error("Email already exists"));
+            // Check if email already exists
+            existingUser = await _authRepo.GetUserByEmail(request.Email);
+            if (existingUser != null)
+                return BadRequest(ApiResponse<object>.Error("Email already exists"));
 
-        var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-        var user = await _authRepo.CreateUser(request, passwordHash);
+            // Hash password and create user
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            var user = await _authRepo.CreateUser(request, passwordHash);
 
-        return Ok(ApiResponse<object>.Ok(new { user.Id, user.Username }, "User registered successfully"));
+            return Ok(ApiResponse<object>.Ok(new { user.Id, user.Username }, "User registered successfully"));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ApiResponse<object>.Error(ex.Message));
+        }
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequestDto request)
     {
-        var user = await _authRepo.GetUserByUsername(request.Username);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-            return Unauthorized(ApiResponse<object>.Error("Invalid credentials"));
-
-        var token = GenerateJwtToken(user);
-        var refreshToken = await _authRepo.CreateRefreshToken(user.Id);
-
-        return Ok(ApiResponse<object>.Ok(new
+        try
         {
-            token,
-            refreshToken = refreshToken.Token,
-            expiresAt = DateTime.Now.AddHours(1)
-        }));
+            // Find user by email
+            var user = await _authRepo.GetUserByEmail(request.Email);
+            
+            if (user == null)
+                return Unauthorized(ApiResponse<object>.Error("Invalid email or password"));
+
+            // Verify password
+            bool isValidPassword = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+            
+            if (!isValidPassword)
+                return Unauthorized(ApiResponse<object>.Error("Invalid email or password"));
+
+            // Generate JWT token
+            var token = GenerateJwtToken(user);
+            var refreshToken = await _authRepo.CreateRefreshToken(user.Id);
+
+            return Ok(ApiResponse<object>.Ok(new
+            {
+                token = token,
+                refreshToken = refreshToken.Token,
+                expiresAt = DateTime.Now.AddHours(24),
+                userId = user.Id,
+                username = user.Username,
+                email = user.Email,
+                firstName = user.FirstName ?? "",
+                lastName = user.LastName ?? ""
+            }, "Login successful"));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ApiResponse<object>.Error(ex.Message));
+        }
+    }
+
+    [HttpGet("me")]
+    public async Task<IActionResult> GetCurrentUser()
+    {
+        try
+        {
+            // Get user ID from JWT token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+                return Unauthorized(ApiResponse<object>.Error("Not authenticated"));
+
+            var userId = int.Parse(userIdClaim.Value);
+            var user = await _authRepo.GetUserById(userId);
+            
+            if (user == null)
+                return NotFound(ApiResponse<object>.Error("User not found"));
+
+            return Ok(ApiResponse<object>.Ok(new
+            {
+                user.Id,
+                user.Username,
+                user.Email,
+                user.FirstName,
+                user.LastName,
+                user.Role
+            }));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ApiResponse<object>.Error(ex.Message));
+        }
     }
 
     private string GenerateJwtToken(User user)
     {
+        // Get JWT settings from configuration
         var jwtKey = _config["Jwt:Key"];
         var jwtIssuer = _config["Jwt:Issuer"];
         var jwtAudience = _config["Jwt:Audience"];
         
-        // Check for null values
+        // Default values if not configured
         if (string.IsNullOrEmpty(jwtKey))
-            throw new InvalidOperationException("JWT Key is not configured");
+            jwtKey = "ThisIsMySuperSecretKeyForJWT1234567890";
         if (string.IsNullOrEmpty(jwtIssuer))
-            throw new InvalidOperationException("JWT Issuer is not configured");
+            jwtIssuer = "QuantityMeasurementAPI";
         if (string.IsNullOrEmpty(jwtAudience))
-            throw new InvalidOperationException("JWT Audience is not configured");
+            jwtAudience = "QuantityMeasurementClient";
             
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -80,14 +144,14 @@ public class AuthController : ControllerBase
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.Username),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role)
+            new Claim(ClaimTypes.Role, user.Role ?? "User")
         };
 
         var token = new JwtSecurityToken(
             issuer: jwtIssuer,
             audience: jwtAudience,
             claims: claims,
-            expires: DateTime.Now.AddHours(1),
+            expires: DateTime.Now.AddHours(24),
             signingCredentials: credentials
         );
 

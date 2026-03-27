@@ -40,14 +40,17 @@ namespace QuantityMeasurementBusinessLayer.Services
                     break;
             }
 
+            // Updated to match new Measurement model
             var measurement = new Measurement
             {
                 UserId = userId,
-                FromUnit = request.FromUnit,
-                ToUnit = request.ToUnit,
-                InputValue = request.Value,
-                OutputValue = result,
-                CreatedAt = DateTime.UtcNow
+                Type = request.Category,
+                Value = (decimal)request.Value,
+                Unit = request.ToUnit,
+                Notes = $"Converted from {request.Value} {request.FromUnit}",
+                Date = DateTime.UtcNow,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
             };
             
             await _measurementRepo.SaveMeasurementAsync(measurement);

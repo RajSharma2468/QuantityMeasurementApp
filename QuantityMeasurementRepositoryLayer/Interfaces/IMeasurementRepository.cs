@@ -4,7 +4,7 @@ namespace QuantityMeasurementRepositoryLayer.Interfaces
 {
     public interface IMeasurementRepository
     {
-        Task SaveMeasurementAsync(Measurement measurement);
+        Task<Measurement> SaveMeasurementAsync(Measurement measurement);
         Task<List<Measurement>> GetMeasurementHistoryAsync(int userId);
         Task<List<Measurement>> GetAllMeasurementsAsync();
         Task<Measurement?> GetMeasurementByIdAsync(int id);

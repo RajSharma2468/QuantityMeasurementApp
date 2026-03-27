@@ -25,6 +25,11 @@ public class AuthRepository : IAuthRepository
         return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
+    public async Task<User?> GetUserById(int id)
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+    }
+
     public async Task<User> CreateUser(RegisterRequestDto request, string passwordHash)
     {
         var user = new User
@@ -33,7 +38,9 @@ public class AuthRepository : IAuthRepository
             Email = request.Email,
             PasswordHash = passwordHash,
             Role = "User",
-            CreatedAt = DateTime.UtcNow
+            CreatedAt = DateTime.UtcNow,
+            FirstName = request.FirstName ?? "",
+            LastName = request.LastName ?? ""
         };
 
         _context.Users.Add(user);
@@ -48,7 +55,8 @@ public class AuthRepository : IAuthRepository
             Token = Guid.NewGuid().ToString(),
             UserId = userId,
             ExpiryDate = DateTime.UtcNow.AddDays(7),
-            IsRevoked = false
+            IsRevoked = false,
+            CreatedAt = DateTime.UtcNow
         };
 
         _context.RefreshTokens.Add(refreshToken);

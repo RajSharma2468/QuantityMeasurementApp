@@ -14,34 +14,31 @@ namespace QuantityMeasurementRepositoryLayer.Repositories
             _context = context;
         }
 
-        public async Task SaveMeasurementAsync(Measurement measurement)
+        public async Task<Measurement> SaveMeasurementAsync(Measurement measurement)
         {
             _context.Measurements.Add(measurement);
             await _context.SaveChangesAsync();
+            return measurement;
         }
 
         public async Task<List<Measurement>> GetMeasurementHistoryAsync(int userId)
         {
             return await _context.Measurements
                 .Where(m => m.UserId == userId)
-                .OrderByDescending(m => m.CreatedAt)
-                .Take(10)
+                .OrderByDescending(m => m.Date)
                 .ToListAsync();
         }
 
         public async Task<List<Measurement>> GetAllMeasurementsAsync()
         {
             return await _context.Measurements
-                .Include(m => m.User)
-                .OrderByDescending(m => m.CreatedAt)
-                .Take(50)
+                .OrderByDescending(m => m.Date)
                 .ToListAsync();
         }
 
         public async Task<Measurement?> GetMeasurementByIdAsync(int id)
         {
             return await _context.Measurements
-                .Include(m => m.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
         }
 
