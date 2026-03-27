@@ -1,9 +1,3 @@
-D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.csproj.AssemblyReference.cache
-D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
-D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.AssemblyInfoInputs.cache
-D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.AssemblyInfo.cs
-D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.csproj.CoreCompileInputs.cache
-D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.sourcelink.json
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\bin\Debug\net8.0\QuantityMeasurementBusinessLayer.deps.json
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\bin\Debug\net8.0\QuantityMeasurementBusinessLayer.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\bin\Debug\net8.0\QuantityMeasurementBusinessLayer.pdb
@@ -11,6 +5,12 @@ D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\bin\Debug\net
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\bin\Debug\net8.0\QuantityMeasurementRepositoryLayer.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\bin\Debug\net8.0\QuantityMeasurementModelLayer.pdb
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\bin\Debug\net8.0\QuantityMeasurementRepositoryLayer.pdb
+D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.csproj.AssemblyReference.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.AssemblyInfoInputs.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.AssemblyInfo.cs
+D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.csproj.CoreCompileInputs.cache
+D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.sourcelink.json
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\Quantity.AFEFF391.Up2Date
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\QuantityMeasurementBusinessLayer.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementBusinessLayer\obj\Debug\net8.0\refint\QuantityMeasurementBusinessLayer.dll
