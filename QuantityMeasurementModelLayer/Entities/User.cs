@@ -13,7 +13,7 @@ namespace QuantityMeasurementModelLayer.Entities
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiryTime { get; set; }
         
-        // ✅ ADD THESE PROPERTIES
+        
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         
