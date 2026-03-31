@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: uc18-quantity-api
+    runtime: image
+    repo: https://github.com/RajSharma2468/QuantityMeasurementApp
+    branch: feature/UC18-Authentication
+    plan: free
+    dockerCommand: dotnet run --urls=http://0.0.0.0:10000
+    rootDir: QuantityMeasurementAPILayer
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        value: Host=dpg-d75mqtmslomc73du0l70-a.singapore-postgres.render.com;Database=quantitymeasurementdb;Username=uc18_admin;Password=RwyvRacrviYZohgh7VbIirrMMayTXWYn;Port=5432;SSL Mode=Require;Trust Server Certificate=true
+      - key: Jwt__Key
+        value: ThisIsMySuperSecretKeyForJWT1234567890
+      - key: Jwt__Issuer
+        value: QuantityMeasurementAPI
+      - key: Jwt__Audience
+        value: QuantityMeasurementClient
