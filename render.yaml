@@ -1,12 +1,12 @@
 services:
   - type: web
     name: uc18-quantity-api
-    runtime: image
+    runtime: docker
     repo: https://github.com/RajSharma2468/QuantityMeasurementApp
     branch: feature/UC18-Authentication
     plan: free
-    dockerCommand: dotnet run --urls=http://0.0.0.0:10000
     rootDir: QuantityMeasurementAPILayer
+    dockerfilePath: Dockerfile
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
