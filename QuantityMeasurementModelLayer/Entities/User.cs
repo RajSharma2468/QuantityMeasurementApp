@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace QuantityMeasurementModelLayer.Entities
 {
@@ -12,12 +13,9 @@ namespace QuantityMeasurementModelLayer.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiryTime { get; set; }
-        
-        
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         
-        // Navigation property
         [JsonIgnore]
         public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }

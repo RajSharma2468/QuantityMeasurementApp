@@ -35,6 +35,8 @@ D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\M
 D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Npgsql.dll
+D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\College\QuantityMeasurementApp\QuantityMeasurementAPILayer\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll

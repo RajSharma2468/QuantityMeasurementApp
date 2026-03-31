@@ -11,7 +11,6 @@ namespace QuantityMeasurementRepositoryLayer.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-        public DbSet<EncryptionHistory> EncryptionHistories { get; set; }
         public DbSet<Measurement> Measurements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,10 +21,12 @@ namespace QuantityMeasurementRepositoryLayer.Context
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(u => u.Id);
-                entity.Property(u => u.Username).IsRequired().HasMaxLength(50);
+                entity.Property(u => u.Username).IsRequired().HasMaxLength(100);
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100);
                 entity.HasIndex(u => u.Username).IsUnique();
                 entity.HasIndex(u => u.Email).IsUnique();
+                entity.Property(u => u.FirstName).HasMaxLength(100);
+                entity.Property(u => u.LastName).HasMaxLength(100);
             });
 
             // RefreshToken configuration
@@ -39,7 +40,7 @@ namespace QuantityMeasurementRepositoryLayer.Context
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Measurement configuration - UPDATED for new Measurement model
+            // Measurement configuration
             modelBuilder.Entity<Measurement>(entity =>
             {
                 entity.HasKey(m => m.Id);

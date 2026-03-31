@@ -24,121 +24,214 @@ namespace QuantityMeasurementAPILayer.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMeasurements()
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized(new { message = "User not authenticated" });
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized(new { success = false, message = "User not authenticated" });
 
-            var measurements = await _context.Measurements
-                .Where(m => m.UserId.ToString() == userId)
-                .OrderByDescending(m => m.Date)
-                .Select(m => new
-                {
-                    m.Id,
-                    m.Type,
-                    m.Value,
-                    m.Unit,
-                    m.Date,
-                    m.Notes,
-                    m.CreatedAt
-                })
-                .ToListAsync();
+                int userId = int.Parse(userIdClaim);
 
-            return Ok(measurements);
+                var measurements = await _context.Measurements
+                    .Where(m => m.UserId == userId)
+                    .OrderByDescending(m => m.Date)
+                    .Select(m => new
+                    {
+                        m.Id,
+                        m.Type,
+                        m.Value,
+                        m.Unit,
+                        Date = m.Date.ToLocalTime(),  // Convert UTC to local for display
+                        m.Notes,
+                        m.CreatedAt,
+                        m.UpdatedAt
+                    })
+                    .ToListAsync();
+
+                return Ok(measurements);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetMeasurements: {ex.Message}");
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
 
         // GET: api/measurements/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMeasurement(int id)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var measurement = await _context.Measurements
-                .FirstOrDefaultAsync(m => m.Id == id && m.UserId.ToString() == userId);
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized(new { success = false, message = "User not authenticated" });
 
-            if (measurement == null)
-                return NotFound(new { message = "Measurement not found" });
+                int userId = int.Parse(userIdClaim);
 
-            return Ok(measurement);
+                var measurement = await _context.Measurements
+                    .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
+
+                if (measurement == null)
+                    return NotFound(new { success = false, message = "Measurement not found" });
+
+                // Convert UTC to local for display
+                measurement.Date = measurement.Date.ToLocalTime();
+
+                return Ok(measurement);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetMeasurement: {ex.Message}");
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
 
         // POST: api/measurements
         [HttpPost]
         public async Task<IActionResult> CreateMeasurement([FromBody] CreateMeasurementDto request)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized(new { message = "User not authenticated" });
-
-            var measurement = new Measurement
+            try
             {
-                Type = request.Type,
-                Value = request.Value,
-                Unit = request.Unit,
-                Date = request.Date ?? DateTime.UtcNow,
-                Notes = request.Notes,
-                UserId = int.Parse(userId),
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
-            };
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized(new { success = false, message = "User not authenticated" });
 
-            _context.Measurements.Add(measurement);
-            await _context.SaveChangesAsync();
+                int userId = int.Parse(userIdClaim);
 
-            return Ok(new
+                // Validate input
+                if (string.IsNullOrEmpty(request.Type))
+                    return BadRequest(new { success = false, message = "Measurement type is required" });
+
+                if (request.Value <= 0)
+                    return BadRequest(new { success = false, message = "Value must be greater than 0" });
+
+                if (string.IsNullOrEmpty(request.Unit))
+                    return BadRequest(new { success = false, message = "Unit is required" });
+
+                Console.WriteLine($"Creating measurement for user: {userId}");
+                Console.WriteLine($"Data: Type={request.Type}, Value={request.Value}, Unit={request.Unit}");
+
+                // Convert DateTime to UTC for PostgreSQL
+                DateTime dateUtc = request.Date?.ToUniversalTime() ?? DateTime.UtcNow;
+
+                var measurement = new Measurement
+                {
+                    Type = request.Type,
+                    Value = request.Value,
+                    Unit = request.Unit,
+                    Date = dateUtc,
+                    Notes = request.Notes ?? "",
+                    UserId = userId,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                };
+
+                _context.Measurements.Add(measurement);
+                await _context.SaveChangesAsync();
+
+                // Convert back to local for response
+                measurement.Date = measurement.Date.ToLocalTime();
+
+                return Ok(new
+                {
+                    success = true,
+                    data = measurement,
+                    message = "Measurement created successfully"
+                });
+            }
+            catch (DbUpdateException dbEx)
             {
-                success = true,
-                data = measurement,
-                message = "Measurement created successfully"
-            });
+                Console.WriteLine($"Database error: {dbEx.Message}");
+                Console.WriteLine($"Inner error: {dbEx.InnerException?.Message}");
+                return StatusCode(500, new { success = false, message = "Database error: " + (dbEx.InnerException?.Message ?? dbEx.Message) });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error creating measurement: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
 
         // PUT: api/measurements/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateMeasurement(int id, [FromBody] UpdateMeasurementDto request)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var measurement = await _context.Measurements
-                .FirstOrDefaultAsync(m => m.Id == id && m.UserId.ToString() == userId);
-
-            if (measurement == null)
-                return NotFound(new { message = "Measurement not found" });
-
-            measurement.Type = request.Type;
-            measurement.Value = request.Value;
-            measurement.Unit = request.Unit;
-            if (request.Date.HasValue)
-                measurement.Date = request.Date.Value;
-            measurement.Notes = request.Notes;
-            measurement.UpdatedAt = DateTime.UtcNow;
-
-            await _context.SaveChangesAsync();
-
-            return Ok(new
+            try
             {
-                success = true,
-                data = measurement,
-                message = "Measurement updated successfully"
-            });
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized(new { success = false, message = "User not authenticated" });
+
+                int userId = int.Parse(userIdClaim);
+
+                var measurement = await _context.Measurements
+                    .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
+
+                if (measurement == null)
+                    return NotFound(new { success = false, message = "Measurement not found" });
+
+                // Update fields
+                measurement.Type = request.Type;
+                measurement.Value = request.Value;
+                measurement.Unit = request.Unit;
+                if (request.Date.HasValue)
+                    measurement.Date = request.Date.Value.ToUniversalTime();  // Convert to UTC
+                measurement.Notes = request.Notes ?? measurement.Notes;
+                measurement.UpdatedAt = DateTime.UtcNow;
+
+                await _context.SaveChangesAsync();
+
+                // Convert back to local for response
+                measurement.Date = measurement.Date.ToLocalTime();
+
+                return Ok(new
+                {
+                    success = true,
+                    data = measurement,
+                    message = "Measurement updated successfully"
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating measurement: {ex.Message}");
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
 
         // DELETE: api/measurements/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMeasurement(int id)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var measurement = await _context.Measurements
-                .FirstOrDefaultAsync(m => m.Id == id && m.UserId.ToString() == userId);
-
-            if (measurement == null)
-                return NotFound(new { message = "Measurement not found" });
-
-            _context.Measurements.Remove(measurement);
-            await _context.SaveChangesAsync();
-
-            return Ok(new
+            try
             {
-                success = true,
-                message = "Measurement deleted successfully"
-            });
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized(new { success = false, message = "User not authenticated" });
+
+                int userId = int.Parse(userIdClaim);
+
+                var measurement = await _context.Measurements
+                    .FirstOrDefaultAsync(m => m.Id == id && m.UserId == userId);
+
+                if (measurement == null)
+                    return NotFound(new { success = false, message = "Measurement not found" });
+
+                _context.Measurements.Remove(measurement);
+                await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "Measurement deleted successfully"
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting measurement: {ex.Message}");
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
     }
 

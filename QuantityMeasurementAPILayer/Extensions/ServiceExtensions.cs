@@ -12,8 +12,10 @@ namespace QuantityMeasurementAPILayer.Extensions
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration config)
         {
             var connectionString = config.GetConnectionString("DefaultConnection");
+            
+           
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseNpgsql(connectionString));
             
             return services;
         }
@@ -22,7 +24,7 @@ namespace QuantityMeasurementAPILayer.Extensions
         {
             // UC18 Repositories
             services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IEncryptionRepository, EncryptionRepository>();
+          //  services.AddScoped<IEncryptionRepository, EncryptionRepository>();
             
             // UC17 Repository
             services.AddScoped<IMeasurementRepository, MeasurementRepository>();
