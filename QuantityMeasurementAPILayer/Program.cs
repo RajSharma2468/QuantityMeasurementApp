@@ -55,17 +55,16 @@ builder.Services.AddAuthorization();
 var app = builder.Build();
 
 // Configure pipeline
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 // Use CORS
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
-// app.UseMiddleware<ApiKeyMiddleware>();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
